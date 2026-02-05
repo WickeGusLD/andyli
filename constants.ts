@@ -47,6 +47,8 @@ const EXPERIENCE_EN: TimelineItem[] = [
     role: "Summer Intern (4 weeks)",
     date: "Aug 2025 - Sep 2025",
     description: "Responsible for clerical work in the Admin Team, collaborating with Executive Officers. Managed office administration including personnel arrangements and proposals for community activities.",
+    link: "https://drive.google.com/file/d/1qC91FAE2_RNzRonDKEjEYyCrUpYUWMzY/view?usp=sharing",
+    linkText: "View Endorsement"
   },
   {
     id: "exp-2025-3",
@@ -71,7 +73,7 @@ const EXPERIENCE_EN: TimelineItem[] = [
     role: "Part-time Intern (40 weeks)",
     date: "Nov 2024 - Oct 2025",
     description: "Daily monastery administration and management, including large-scale ceremony logistics and crowd control. Managed regular 'Tsz Shan Forest Therapy' activities and led volunteer teams in daily practice services.",
-    link: "https://drive.google.com/file/d/18CjZECSNPjp2EHnoxey2aj2ERFCT1vdF/view?usp=sharing",
+    link: "https://drive.google.com/file/d/1LXOMraVbPVb4OBMEE2gZd0HYNnwkEzx9/view?usp=sharing",
     linkText: "View Endorsement"
   },
   {
@@ -138,6 +140,8 @@ const EXPERIENCE_ZH: TimelineItem[] = [
     role: "政府暑期實習生（四星期）",
     date: "2025年8月 - 2025年9月",
     description: "負責行政組 (Admin Team) 的文書工作，與各行政主任 (Executive Officer) 合作，管理處內事務，包括人事安排、社區活動提議等。",
+    link: "https://drive.google.com/file/d/1qC91FAE2_RNzRonDKEjEYyCrUpYUWMzY/view?usp=sharing",
+    linkText: "查看證明"
   },
   {
     id: "exp-2025-3",
@@ -162,7 +166,7 @@ const EXPERIENCE_ZH: TimelineItem[] = [
     role: "兼職實習生（四十星期）",
     date: "2024年11月 - 2025年10月",
     description: "日常寺廟行政及管理工作，包括：大型法會行政安排、人流管理、常規「慈森.山林療癒」活動管理、帶領義工團隊進行日常修持服務。",
-    link: "https://drive.google.com/file/d/18CjZECSNPjp2EHnoxey2aj2ERFCT1vdF/view?usp=sharing",
+    link: "https://drive.google.com/file/d/1LXOMraVbPVb4OBMEE2gZd0HYNnwkEzx9/view?usp=sharing",
     linkText: "查看證明"
   },
   {

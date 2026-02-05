@@ -50,7 +50,7 @@ const Hero: React.FC = () => {
       namePart1: "李展鴻 Andy",
       namePart2: "", // Empty to avoid the break between part 1 and 2
       nameSuffix: <>，<br />辛會！</>,
-      cta: "查看履歷",
+      cta: "查看作品集",
       headingClass: "text-3xl md:text-5xl lg:text-7xl"
     }
   };
@@ -116,18 +116,20 @@ const Hero: React.FC = () => {
   // Helper to render background pattern
   const renderBackgroundPattern = (words: string[], colorClass: string) => {
     // Create fixed number of rows to cover vertical height
-    const rows = Array.from({ length: 18 });
+    const rows = Array.from({ length: 15 });
 
     return (
       <div className={`absolute inset-0 flex flex-col justify-between overflow-hidden opacity-60 select-none pointer-events-none ${colorClass} py-4`}>
         {rows.map((_, i) => (
-          <div key={i} className="flex w-full overflow-hidden">
+          // Use pb-2 to prevent descenders from being cut off
+          // Display all rows on all devices to reduce vertical gaps
+          <div key={i} className="flex w-full overflow-hidden pb-2">
             <div 
                className={`flex whitespace-nowrap ${i % 2 === 0 ? 'animate-scroll-left' : 'animate-scroll-right'}`}
                style={{ width: 'fit-content' }}
             >
                {getRowContent(words, i).map((word, wIndex) => (
-                 <span key={wIndex} className="inline-block mx-6 text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter opacity-30">
+                 <span key={wIndex} className="inline-block mx-4 md:mx-6 text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter opacity-30 leading-relaxed">
                    {word}
                  </span>
                ))}
