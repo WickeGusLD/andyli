@@ -35,8 +35,8 @@ const App: React.FC = () => {
 
   return (
     <LanguageProvider>
+      <Header />
       <div className="relative animate-fade-in-up">
-        <Header />
         <main>
           <Hero />
           <About />

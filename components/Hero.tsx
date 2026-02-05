@@ -50,7 +50,7 @@ const Hero: React.FC = () => {
       namePart1: "李展鴻 Andy",
       namePart2: "", // Empty to avoid the break between part 1 and 2
       nameSuffix: <>，<br />辛會！</>,
-      cta: "查看作品集",
+      cta: "查看履歷",
       headingClass: "text-3xl md:text-5xl lg:text-7xl"
     }
   };
@@ -70,6 +70,9 @@ const Hero: React.FC = () => {
 
     // Mouse Events
     const handleMouseMove = (e: MouseEvent) => {
+      // Disable logic on non-desktop screens
+      if (window.innerWidth < 1024) return;
+
       const rect = container.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
@@ -77,7 +80,10 @@ const Hero: React.FC = () => {
     };
 
     const handleMouseEnter = () => {
-      setIsHovering(true);
+      // Only enable hover state on desktop
+      if (window.innerWidth >= 1024) {
+        setIsHovering(true);
+      }
     };
 
     const handleMouseLeave = () => {
@@ -136,7 +142,7 @@ const Hero: React.FC = () => {
     <section 
       id="intro" 
       ref={containerRef}
-      className="relative min-h-screen w-full overflow-hidden cursor-none md:cursor-default"
+      className="relative min-h-screen w-full overflow-hidden cursor-default lg:cursor-none"
     >
       {/* 
         LAYER 1: BASE LAYER
@@ -172,10 +178,11 @@ const Hero: React.FC = () => {
         Dark Theme (Dark BG)
         Displays content in ALTERNATE language.
         Revealed by clip-path.
+        HIDDEN on Mobile/Tablet (lg breakpoint and below)
       */}
       <div 
         ref={spotlightRef}
-        className={`absolute inset-0 bg-slate-900 flex items-center justify-center pointer-events-none transition-opacity duration-300 ${isHovering ? 'opacity-100' : 'opacity-0'}`}
+        className={`hidden lg:flex absolute inset-0 bg-slate-900 items-center justify-center pointer-events-none transition-opacity duration-300 ${isHovering ? 'opacity-100' : 'opacity-0'}`}
         style={{
           // Initial state (hidden)
           clipPath: `circle(0px at 50% 50%)`,
