@@ -117,13 +117,21 @@ const Timeline: React.FC = () => {
             
             {/* Language Proficiency */}
              <div className="mt-8 bg-white p-6 rounded-xl border border-slate-200">
-               <h3 className="text-lg font-bold text-slate-800 mb-2">{t.timeline.langTitle}</h3>
-               <div className="flex items-baseline justify-between mb-2">
-                 <span className="font-medium text-slate-700">{t.timeline.langLabel}</span>
-                 <span className="text-2xl font-bold text-teal-600">7.5</span>
+               <h3 className="text-lg font-bold text-slate-800 mb-6">{t.timeline.langTitle}</h3>
+               
+               <div className="space-y-8">
+                 {t.timeline.languages.map((lang, index) => (
+                   <div key={index} className={index > 0 ? "pt-6 border-t border-slate-100" : ""}>
+                     <h4 className="text-xs font-bold tracking-widest text-slate-400 uppercase mb-3">{lang.subtitle}</h4>
+                     <div className="flex items-baseline justify-between mb-2">
+                       <span className="font-medium text-slate-700">{lang.name}</span>
+                       {lang.score && <span className="text-2xl font-bold text-teal-600">{lang.score}</span>}
+                     </div>
+                     {lang.description && <p className="text-sm text-slate-500 mb-1">{lang.description}</p>}
+                     <div className="mt-2 text-xs text-slate-400">{lang.issuer}</div>
+                   </div>
+                 ))}
                </div>
-               <p className="text-sm text-slate-500">{t.timeline.langDesc}</p>
-               <div className="mt-3 text-xs text-slate-400">{t.timeline.langSub}</div>
              </div>
           </div>
 

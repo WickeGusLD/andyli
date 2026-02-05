@@ -12,7 +12,8 @@ const SKILLS_EN: Skill[] = [
   { name: "Innovative Teaching", category: "pedagogy" },
   { name: "Curriculum Design", category: "pedagogy" },
   { name: "EdTech Innovation", category: "tech" },
-  { name: "AR/VR Design", category: "tech" },
+  { name: "AR/VR Game Design", category: "tech" },
+  { name: "AI Teaching Material Design", category: "tech" },
   { name: "Filming Script Writing", category: "creative" },
   { name: "Storyboard Illustration", category: "creative" },
   { name: "Interactive Event Design", category: "creative" },
@@ -20,117 +21,194 @@ const SKILLS_EN: Skill[] = [
 
 const SKILLS_ZH: Skill[] = [
   { name: "專業教學法", category: "pedagogy" },
-  { name: "創新教學", category: "pedagogy" },
+  { name: "創意教學", category: "pedagogy" },
   { name: "課程設計", category: "pedagogy" },
-  { name: "教育科技創新", category: "tech" },
-  { name: "AR/VR 設計", category: "tech" },
-  { name: "影片腳本撰寫", category: "creative" },
-  { name: "分鏡圖繪製", category: "creative" },
-  { name: "互動活動設計", category: "creative" },
+  { name: "教育科技(EdTech)創新", category: "tech" },
+  { name: "AR/VR 遊戲設計", category: "tech" },
+  { name: "AI 教學工具設計", category: "tech" },
+  { name: "創意寫作", category: "creative" },
+  { name: "Storyboard繪製", category: "creative" },
+  { name: "活動教學設計", category: "creative" },
 ];
 
 const EXPERIENCE_EN: TimelineItem[] = [
   {
-    id: "exp-1",
-    title: "Hong Kong Taoist Association The Yuen Yuen Institute No.2 Secondary School",
-    subtitle: "Tutoring",
-    role: "F.5 Writing Supplementary Class Tutor",
-    date: "April 2022 - June 2022",
-    description: "Assisted in preparing F.5 senior students for DSE Chinese Language Paper 2. Conducted after-class lessons, designed teaching materials (PowerPoint, notes, worksheets), and managed homework assessment.",
-    link: "https://drive.google.com/file/d/1o8NQxaljAE3KVZKqrSULzsSs_xVXWgBy/view?usp=sharing",
-    linkText: "View Endorsement"
+    id: "exp-2025-1",
+    title: "The Education University of Hong Kong",
+    subtitle: "Mentorship Scheme",
+    role: "Project Tutor (Supervisor: Prof. Leung Pui Wan)",
+    date: "2025 - 2026",
+    description: "Conducting research on: Application of AI in Chinese Language Teaching, and Teaching Chinese as a Second Language.",
   },
   {
-    id: "exp-2",
-    title: "AESIR LIMITED",
+    id: "exp-2025-2",
+    title: "Wong Tai Sin District Office",
+    subtitle: "Government Summer Intern",
+    role: "Summer Intern (4 weeks)",
+    date: "Aug 2025 - Sep 2025",
+    description: "Responsible for clerical work in the Admin Team, collaborating with Executive Officers. Managed office administration including personnel arrangements and proposals for community activities.",
+  },
+  {
+    id: "exp-2025-3",
+    title: "Hong Kong Examinations and Assessment Authority (HKEAA)",
+    subtitle: "Assessment Administration",
+    role: "2025 TSA Assessment Assistant (AAA)",
+    date: "June 2025",
+    description: "Supervised the execution of duties at assigned schools, assisting the Assessment Administration Supervisor and invigilators in fulfilling their responsibilities for the Territory-wide System Assessment.",
+  },
+  {
+    id: "exp-2024-1",
+    title: "HKFYG M21 Multimedia Centre",
+    subtitle: "STEAM Education",
+    role: "Part-time Instructor",
+    date: "2024 - 2026",
+    description: "Resident STEAM Instructor leading regular courses: VR Painting Experience Class, Generative AI (AIGC) Workshops. Served as a mentor in the YouthTech scheme, leading secondary students in applying technology for community care activities.",
+  },
+  {
+    id: "exp-2024-2",
+    title: "Tsz Shan Monastery",
     subtitle: "Internship",
-    role: "Digital Marketing & Seasonal Programmer",
-    date: "June 2022 - August 2022",
-    description: "Collaborated with Consumer Council on VR/AR videos for mentally challenged individuals. Designed scripts and storyboards for consumer education. Assisted in funding proposals for ESR and ICT awards pitching.",
-    link: "https://drive.google.com/file/d/19LdyYAKePd61U1zXjTqhCj8tWlCMNgNi/view?usp=sharing",
+    role: "Part-time Intern (40 weeks)",
+    date: "Nov 2024 - Oct 2025",
+    description: "Daily monastery administration and management, including large-scale ceremony logistics and crowd control. Managed regular 'Tsz Shan Forest Therapy' activities and led volunteer teams in daily practice services.",
+    link: "https://drive.google.com/file/d/18CjZECSNPjp2EHnoxey2aj2ERFCT1vdF/view?usp=sharing",
     linkText: "View Endorsement"
   },
   {
-    id: "exp-3",
+    id: "exp-2024-3",
+    title: "Tsz Shan Institute & UC Berkeley",
+    subtitle: "Greater Good Science Centre",
+    role: "Part-time Intern (40 weeks)",
+    date: "Nov 2024 - Oct 2025",
+    description: "Responsible for administration and logistics of courses including: 'Science of Happiness' certificate course and 'Cultivating Emotional Balance' certificate course.",
+  },
+  {
+    id: "exp-2022-4",
+    title: "The Education University of Hong Kong",
+    subtitle: "One City One Book",
+    role: "Part-time Student Assistant",
+    date: "Sep 2022 - Sep 2024",
+    description: "Assisted in annual book selection, reading clubs, and literature promotion events. Projects included '2022 Poems of Yin Jiang', '2023 Ng Hui-bun: Ox', and '2024 Dung Kai-cheung'.",
+  },
+  {
+    id: "exp-2023-1",
     title: "Consumer Council",
     subtitle: "Internship",
-    role: "Consumer Education Division Intern",
-    date: "June 2023 - August 2023",
-    description: "Explored education for Primary, Secondary, Elderly, and SEN groups. Participated in signature programs like 'Earth 2038', CSSA, SCA, and VR role-play experiences for SEN students.",
+    role: "Summer Intern (12 weeks)",
+    date: "June 2023",
+    description: "Consumer Education Programme (Special Needs & Elderly). Designed teaching presentations and aids for special schools and lectures. Assistant for 'Earth 2038' Sustainable Consumption Education school activities.",
     link: "https://drive.google.com/file/d/1glSfKjXM1zrahPqjEhzNXQKQ7AMbDwHH/view?usp=sharing",
     linkText: "View Endorsement"
   },
   {
-    id: "exp-4",
-    title: "EdUHK LCS & RCCLLC",
-    subtitle: "Student Helper",
-    role: "Student Ambassador & Event Helper",
-    date: "September 2022 - Present",
-    description: "Supporting various departmental events and student activities as an ambassador.",
-    link: "https://drive.google.com/file/d/18CjZECSNPjp2EHnoxey2aj2ERFCT1vdF/view?usp=sharing",
+    id: "exp-2022-2",
+    title: "AESIR Limited (EdTech Start-up)",
+    subtitle: "Internship",
+    role: "Summer Intern",
+    date: "June 2022 - Sep 2022",
+    description: "Handled project handover and follow-up, communicating with target clients to coordinate progress. Mainly responsible for VR resource kit design for the Consumer Council (CED) Special Needs Support Project.",
+    link: "https://drive.google.com/file/d/19LdyYAKePd61U1zXjTqhCj8tWlCMNgNi/view?usp=sharing",
     linkText: "View Endorsement"
   },
   {
-    id: "exp-5",
-    title: "Tsz Shan Monastery",
-    subtitle: "Internship",
-    role: "Secretary's Office Intern",
-    date: "November 2024 - Present",
-    description: "Assisting with administrative duties and secretarial tasks within the monastery.",
-    link: "https://drive.google.com/file/d/18CjZECSNPjp2EHnoxey2aj2ERFCT1vdF/view?usp=sharing",
+    id: "exp-2022-1",
+    title: "HKTA The Yuen Yuen Institute No.2 Secondary School",
+    subtitle: "Tutoring",
+    role: "Course Instructor / F.5 Writing Tutor",
+    date: "Apr 2022 - June 2022",
+    description: "Provided elite writing classes for F.5 students (via Zoom) to enhance HKDSE Chinese writing skills. Work included designing teaching materials and marking compositions.",
+    link: "https://drive.google.com/file/d/1o8NQxaljAE3KVZKqrSULzsSs_xVXWgBy/view?usp=sharing",
     linkText: "View Endorsement"
   }
 ];
 
 const EXPERIENCE_ZH: TimelineItem[] = [
   {
-    id: "exp-1",
-    title: "香港道教聯合會圓玄學院第二中學",
-    subtitle: "補習導師",
-    role: "中五寫作補底班導師",
-    date: "2022年4月 - 2022年6月",
-    description: "協助中五學生準備文憑試中文科卷二。負責課後輔導，設計教學材料（PowerPoint、筆記、工作紙），並管理作業評估。",
-    link: "https://drive.google.com/file/d/1o8NQxaljAE3KVZKqrSULzsSs_xVXWgBy/view?usp=sharing",
-    linkText: "查看證明"
+    id: "exp-2025-1",
+    title: "香港教育大學「師徒計劃」",
+    subtitle: "計劃導師：梁佩雲教授",
+    role: "計劃導師",
+    date: "2025年 - 2026年",
+    description: "隨導師開展及進行以下相關研究：人工智能 (AI) 在中國語文教學的應用、中文作為第二語言教學法。",
   },
   {
-    id: "exp-2",
-    title: "AESIR LIMITED",
+    id: "exp-2025-2",
+    title: "黃大仙民政事務處",
+    subtitle: "政府暑期實習生",
+    role: "政府暑期實習生（四星期）",
+    date: "2025年8月 - 2025年9月",
+    description: "負責行政組 (Admin Team) 的文書工作，與各行政主任 (Executive Officer) 合作，管理處內事務，包括人事安排、社區活動提議等。",
+  },
+  {
+    id: "exp-2025-3",
+    title: "香港考試及評核局 (HKEAA)",
+    subtitle: "評估行政",
+    role: "2025 全港性系統評估 (TSA) 評核助理 (AAA)",
+    date: "2025年6月",
+    description: "於所派駐學校的評估行政主管監督下執行職務，協助評估行政主管及監考員履行其職責。",
+  },
+  {
+    id: "exp-2024-1",
+    title: "香港青年協會 M21 媒體空間",
+    subtitle: "STEAM 教育",
+    role: "兼職課程導師",
+    date: "2024年 - 2026年",
+    description: "中心常駐 STEAM 導師，帶領以下常規課程：虛擬實境 (VR) 繪畫體驗班、生成式人工智能 (AIGC) 工作坊。於 M21 媒體空間與香港賽馬會 YouthTech 計劃中擔任導師，帶領中學生應用科技舉辦社區關愛活動。",
+  },
+  {
+    id: "exp-2024-2",
+    title: "慈山寺",
     subtitle: "實習",
-    role: "數碼營銷及程式設計實習生",
-    date: "2022年6月 - 2022年8月",
-    description: "與消費者委員會合作製作針對智障人士的 VR/AR 影片。設計消費者教育的腳本和分鏡圖。協助撰寫 ESR 和 ICT 獎項的資助提案。",
-    link: "https://drive.google.com/file/d/19LdyYAKePd61U1zXjTqhCj8tWlCMNgNi/view?usp=sharing",
+    role: "兼職實習生（四十星期）",
+    date: "2024年11月 - 2025年10月",
+    description: "日常寺廟行政及管理工作，包括：大型法會行政安排、人流管理、常規「慈森.山林療癒」活動管理、帶領義工團隊進行日常修持服務。",
+    link: "https://drive.google.com/file/d/18CjZECSNPjp2EHnoxey2aj2ERFCT1vdF/view?usp=sharing",
     linkText: "查看證明"
   },
   {
-    id: "exp-3",
+    id: "exp-2024-3",
+    title: "慈山學院 與 UC Berkeley",
+    subtitle: "Greater Good Science Centre",
+    role: "兼職實習生（四十星期）",
+    date: "2024年11月 - 2025年10月",
+    description: "負責以下課程之行政及後勤工作：靜觀及心靈教育證書課程 (Science of Happiness)、培養正向情緒證書課程 (Cultivating Emotional Balance)。",
+  },
+  {
+    id: "exp-2022-4",
+    title: "香港教育大學",
+    subtitle: "我城我書 (One City One Book)",
+    role: "兼職學生助理",
+    date: "2022年9月 - 2024年9月",
+    description: "就年度選書，協辦讀書會及各文學推廣活動——2022 飲江詩選、2023 吳煦斌《牛》及 2024 董啟章《天工開物·栩栩如真》。",
+  },
+  {
+    id: "exp-2023-1",
     title: "消費者委員會",
     subtitle: "實習",
-    role: "消費者教育部實習生",
-    date: "2023年6月 - 2023年8月",
-    description: "探索針對小學、中學、長者及特殊教育需要群體的教育工作。參與「地球 2038」、CSSA、SCA 等重點項目，並協助 SEN 學生的 VR 角色扮演體驗。",
+    role: "暑期實習生（十二星期）",
+    date: "2023年6月",
+    description: "消費者教育計劃（針對特殊需要人士及年長人士）。設計教學簡報及相關教具，供入校（特校）及講座使用。作為教學助理，協助帶領 Earth 2038 可持續消費教育計劃小學入校活動。",
     link: "https://drive.google.com/file/d/1glSfKjXM1zrahPqjEhzNXQKQ7AMbDwHH/view?usp=sharing",
     linkText: "查看證明"
   },
   {
-    id: "exp-4",
-    title: "香港教育大學 LCS & RCCLLC",
-    subtitle: "學生助手",
-    role: "學生大使及活動助手",
-    date: "2022年9月 - 現在",
-    description: "擔任大使，支援各種部門活動和學生活動。",
-    link: "https://drive.google.com/file/d/18CjZECSNPjp2EHnoxey2aj2ERFCT1vdF/view?usp=sharing",
+    id: "exp-2022-2",
+    title: "AESIR Limited (EdTech Start-up)",
+    subtitle: "實習",
+    role: "暑期實習生",
+    date: "2022年6月 - 2022年9月",
+    description: "擔任項目交接與跟進，與目標客戶溝通並協調計畫進度。期間主要負責與香港消費者委員會——消費者教育部(CED)特殊需要人士支援計劃中 VR 資源教材套設計。",
+    link: "https://drive.google.com/file/d/19LdyYAKePd61U1zXjTqhCj8tWlCMNgNi/view?usp=sharing",
     linkText: "查看證明"
   },
   {
-    id: "exp-5",
-    title: "慈山寺",
-    subtitle: "實習",
-    role: "秘書處實習生",
-    date: "2024年11月 - 現在",
-    description: "協助寺內的行政職務及秘書工作。",
-    link: "https://drive.google.com/file/d/18CjZECSNPjp2EHnoxey2aj2ERFCT1vdF/view?usp=sharing",
+    id: "exp-2022-1",
+    title: "香港道教聯合會圓玄學院第二中學",
+    subtitle: "補習",
+    role: "課程導師 / 高中中文課增潤班導師",
+    date: "2022年4月 - 2022年6月",
+    description: "擔任課後高中中文課增潤班導師（網授）。為該校中五級提供寫作能力拔尖班，以提升同學應對中學文憑考試 (HKDSE) 中文寫作的能力。工作包括設計教材、評改學生作文。",
+    link: "https://drive.google.com/file/d/1o8NQxaljAE3KVZKqrSULzsSs_xVXWgBy/view?usp=sharing",
     linkText: "查看證明"
   }
 ];
@@ -195,55 +273,85 @@ const EDUCATION_ZH: TimelineItem[] = [
 
 const AWARDS_EN: Accreditation[] = [
   {
-    id: "aw-1",
-    title: "The Joseph Lau Luen Hung Charitable Trust Scholarships",
-    issuer: "The Education University of Hong Kong",
-    link: "https://drive.google.com/file/d/1oSY34NA8y2InWkIk938wWtaA75xYnrpk/view?usp=sharing"
+    id: "aw-2025",
+    title: "Beijing Language and Culture University - Culture & Language Immersion Course",
+    issuer: "Beijing Language and Culture University",
   },
   {
-    id: "aw-2",
-    title: "Hong Kong International Institute of Educational Leadership Scholarship",
-    issuer: "The Education University of Hong Kong",
-    link: "https://drive.google.com/file/d/1ysfNGGk7lqAim4EZuI9UIvL5ZYZBZMdL/view?usp=sharing"
+    id: "aw-2024-1",
+    title: "Basic Law and National Security Law Test",
+    issuer: "Civil Service Bureau",
   },
   {
-    id: "aw-3",
-    title: "Values Education Programme (90-hours)",
-    issuer: "Hong Kong International Institute of Educational Leadership",
+    id: "aw-2024-2",
+    title: "90-hour Values Education Certificate Course",
+    issuer: "Hong Kong International Institute of Educational Leadership / Lingnan University",
     link: "https://drive.google.com/file/d/1X4nDkYMm43Eq0dvL73otmPa43WTY0Mr4/view?usp=sharing"
   },
   {
-    id: "aw-4",
-    title: "Mental Health First Aid (MHFA) Standard Course",
+    id: "aw-2023-1",
+    title: "Hong Kong International Institute of Educational Leadership Scholarship",
+    issuer: "HKIIEL / The Education University of Hong Kong",
+    link: "https://drive.google.com/file/d/1ysfNGGk7lqAim4EZuI9UIvL5ZYZBZMdL/view?usp=sharing"
+  },
+  {
+    id: "aw-2023-2",
+    title: "East China Normal University Putonghua Immersion Course Certificate",
+    issuer: "East China Normal University",
+  },
+  {
+    id: "aw-2022",
+    title: "12-hour Mental Health First Aid (MHFA) Standard Course",
     issuer: "The Mental Health Association of Hong Kong",
     link: "https://drive.google.com/file/d/1IMCouKwpklQH_88Lyh3ypI47VeaGE1RF/view?usp=sharing"
+  },
+  {
+    id: "aw-2021",
+    title: "The Joseph Lau Luen Hung Charitable Trust Scholarships",
+    issuer: "The Joseph Lau Luen Hung Charitable Trust / The Education University of Hong Kong",
+    link: "https://drive.google.com/file/d/1oSY34NA8y2InWkIk938wWtaA75xYnrpk/view?usp=sharing"
   }
 ];
 
 const AWARDS_ZH: Accreditation[] = [
   {
-    id: "aw-1",
-    title: "劉鑾雄慈善基金獎學金",
-    issuer: "香港教育大學",
-    link: "https://drive.google.com/file/d/1oSY34NA8y2InWkIk938wWtaA75xYnrpk/view?usp=sharing"
+    id: "aw-2025",
+    title: "北京語言大學文化及語言沉浸課程",
+    issuer: "北京語言大學",
   },
   {
-    id: "aw-2",
-    title: "香港國際教育領導學院獎學金",
-    issuer: "香港教育大學",
-    link: "https://drive.google.com/file/d/1ysfNGGk7lqAim4EZuI9UIvL5ZYZBZMdL/view?usp=sharing"
+    id: "aw-2024-1",
+    title: "基本法及香港國安法測試",
+    issuer: "公務員事務局",
   },
   {
-    id: "aw-3",
-    title: "價值觀教育課程（90小時）",
-    issuer: "香港國際教育領導學院",
+    id: "aw-2024-2",
+    title: "九十小時專業價值觀教育課程",
+    issuer: "香港國際教賢學院、嶺南大學",
     link: "https://drive.google.com/file/d/1X4nDkYMm43Eq0dvL73otmPa43WTY0Mr4/view?usp=sharing"
   },
   {
-    id: "aw-4",
-    title: "精神健康急救 (MHFA) 標準課程",
+    id: "aw-2023-1",
+    title: "香港國際教賢學院獎學金",
+    issuer: "香港國際教賢學院、香港教育大學",
+    link: "https://drive.google.com/file/d/1ysfNGGk7lqAim4EZuI9UIvL5ZYZBZMdL/view?usp=sharing"
+  },
+  {
+    id: "aw-2023-2",
+    title: "華東師範大學普通話沉浸課程合格證書",
+    issuer: "華東師範大學",
+  },
+  {
+    id: "aw-2022",
+    title: "十二小時精神健康急救標準課程",
     issuer: "香港心理衞生會",
     link: "https://drive.google.com/file/d/1IMCouKwpklQH_88Lyh3ypI47VeaGE1RF/view?usp=sharing"
+  },
+  {
+    id: "aw-2021",
+    title: "劉鑾雄慈善基金獎學金",
+    issuer: "劉鑾雄慈善基金、香港教育大學",
+    link: "https://drive.google.com/file/d/1oSY34NA8y2InWkIk938wWtaA75xYnrpk/view?usp=sharing"
   }
 ];
 
@@ -293,14 +401,6 @@ const PORTFOLIO_EN: PortfolioItem[] = [
     image: "https://picsum.photos/id/180/600/400",
     tags: ["Education", "Workplace", "Counselling"],
     description: "Acted as a buddy for F.3-F.4 students experiencing the workplace for the first time. Shared previous internship experiences and provided consultation and advice.",
-  },
-  {
-    id: "port-6",
-    title: "One City One Book HK",
-    category: "Community Reading",
-    image: "https://picsum.photos/id/1073/600/400",
-    tags: ["Reading", "Literature", "Promotion"],
-    description: "One City One Book is a community reading programme. As a student ambassador, I promoted the programme by speaking at reading clubs, reaching out to schools, facilitating online streaming, and photographing events.",
   },
   {
     id: "port-7",
@@ -360,14 +460,6 @@ const PORTFOLIO_ZH: PortfolioItem[] = [
     image: "https://picsum.photos/id/180/600/400",
     tags: ["教育", "職場", "輔導"],
     description: "擔任首次體驗職場的中三至中四學生的夥伴。分享以往的實習經驗，並提供諮詢和建議。",
-  },
-  {
-    id: "port-6",
-    title: "香港一城一書",
-    category: "社區閱讀",
-    image: "https://picsum.photos/id/1073/600/400",
-    tags: ["閱讀", "文學", "推廣"],
-    description: "「一城一書」是一個社區閱讀計劃。作為學生大使，我通過在讀書會演講、接觸學校、協助網上直播和拍攝活動來推廣該計劃。",
   },
   {
     id: "port-7",
@@ -434,9 +526,21 @@ export const DATA = {
       learnMore: 'Learn More',
       viewCertificate: 'View Certificate',
       langTitle: 'Language Proficiency',
-      langLabel: 'IELTS Academic',
-      langDesc: 'Listening: 8.5 | Reading: 8.0 | Writing: 6.5 | Speaking: 6.5',
-      langSub: 'British Council'
+      languages: [
+        {
+          subtitle: 'English',
+          name: 'IELTS Academic',
+          score: '7.5',
+          description: 'Listening: 8.5 | Reading: 8.0 | Writing: 6.5 | Speaking: 6.5',
+          issuer: 'British Council'
+        },
+        {
+          subtitle: 'Putonghua',
+          name: 'Putonghua Proficiency Test (PSC)',
+          score: 'Grade 2-B',
+          issuer: 'State Language Commission'
+        }
+      ]
     },
     portfolio: {
       subtitle: 'Portfolio',
@@ -518,9 +622,21 @@ export const DATA = {
       learnMore: '了解更多',
       viewCertificate: '查看證書',
       langTitle: '語言能力',
-      langLabel: 'IELTS 學術模式',
-      langDesc: '聆聽：8.5 | 閱讀：8.0 | 寫作：6.5 | 會話：6.5',
-      langSub: '英國文化協會'
+      languages: [
+        {
+          subtitle: '英文',
+          name: 'IELTS 學術模式',
+          score: '7.5',
+          description: '聆聽：8.5 | 閱讀：8.0 | 寫作：6.5 | 會話：6.5',
+          issuer: '英國文化協會'
+        },
+        {
+          subtitle: '普通話',
+          name: '國家語委普通話水平測試（PSC）',
+          score: '二級乙等',
+          issuer: '國家語言文字工作委員會'
+        }
+      ]
     },
     portfolio: {
       subtitle: '作品集',

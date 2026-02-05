@@ -33,21 +33,25 @@ const Hero: React.FC = () => {
       words: BG_WORDS_EN,
       bgClassBase: "text-slate-400",
       bgClassOverlay: "text-slate-500", // Slightly different for overlay
-      greeting: "Greetings!",
+      greeting: "GREETINGS!",
       iAm: "I am",
       namePart1: "Zhanhong",
       namePart2: "Li Andy",
-      cta: "View Portfolio"
+      nameSuffix: "",
+      cta: "View Portfolio",
+      headingClass: "text-5xl md:text-7xl lg:text-9xl"
     },
     zh: {
       words: BG_WORDS_ZH,
       bgClassBase: "text-slate-600",
       bgClassOverlay: "text-slate-400",
-      greeting: "你好！",
+      greeting: <>一期一會，會者定離。<br />難得一面，世當珍惜。</>,
       iAm: "我是",
-      namePart1: "李展鴻",
-      namePart2: "Andy",
-      cta: "查看作品集"
+      namePart1: "李展鴻 Andy",
+      namePart2: "", // Empty to avoid the break between part 1 and 2
+      nameSuffix: <>，<br />辛會！</>,
+      cta: "查看作品集",
+      headingClass: "text-3xl md:text-5xl lg:text-7xl"
     }
   };
 
@@ -64,13 +68,11 @@ const Hero: React.FC = () => {
 
     if (!container || !spotlight) return;
 
+    // Mouse Events
     const handleMouseMove = (e: MouseEvent) => {
-      // Calculate position relative to the container
       const rect = container.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
-      
-      // Update the clip-path directly
       spotlight.style.clipPath = `circle(250px at ${x}px ${y}px)`;
     };
 
@@ -80,37 +82,83 @@ const Hero: React.FC = () => {
 
     const handleMouseLeave = () => {
       setIsHovering(false);
-      // Reset spotlight to center or hidden
       spotlight.style.clipPath = `circle(0px at 50% 50%)`;
     };
 
+    // Touch Events for Mobile
+    const handleTouchMove = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        const touch = e.touches[0];
+        const rect = container.getBoundingClientRect();
+        const x = touch.clientX - rect.left;
+        const y = touch.clientY - rect.top;
+        spotlight.style.clipPath = `circle(250px at ${x}px ${y}px)`;
+      }
+    };
+
+    const handleTouchStart = (e: TouchEvent) => {
+      setIsHovering(true);
+      handleTouchMove(e); // Set initial position immediately
+    };
+
+    const handleTouchEnd = () => {
+      setIsHovering(false);
+      spotlight.style.clipPath = `circle(0px at 50% 50%)`;
+    };
+
+    // Add Listeners
     container.addEventListener('mousemove', handleMouseMove);
     container.addEventListener('mouseenter', handleMouseEnter);
     container.addEventListener('mouseleave', handleMouseLeave);
+    
+    // Touch listeners (passive: true to allow scrolling)
+    container.addEventListener('touchstart', handleTouchStart, { passive: true });
+    container.addEventListener('touchmove', handleTouchMove, { passive: true });
+    container.addEventListener('touchend', handleTouchEnd);
+    container.addEventListener('touchcancel', handleTouchEnd);
 
     return () => {
       container.removeEventListener('mousemove', handleMouseMove);
       container.removeEventListener('mouseenter', handleMouseEnter);
       container.removeEventListener('mouseleave', handleMouseLeave);
+      
+      container.removeEventListener('touchstart', handleTouchStart);
+      container.removeEventListener('touchmove', handleTouchMove);
+      container.removeEventListener('touchend', handleTouchEnd);
+      container.removeEventListener('touchcancel', handleTouchEnd);
     };
-  }, []); // Empty dependency array ensures listeners are attached once
+  }, []);
 
-  // Helper to render background words
+  // Helper to get rotated words for a specific row to ensure deterministic rendering
+  const getRowContent = (words: string[], rowIndex: number) => {
+    // Rotate words based on row index to create visual variety
+    const shift = (rowIndex * 3) % words.length;
+    const rotated = [...words.slice(shift), ...words.slice(0, shift)];
+    // Duplicate twice to ensure seamless looping and coverage of wide screens
+    // Each set needs to be wide enough to fill the screen width
+    return [...rotated, ...rotated, ...rotated]; 
+  };
+
+  // Helper to render background pattern
   const renderBackgroundPattern = (words: string[], colorClass: string) => {
-    // Increased repetition to ensure dense packing
-    const repeatedContent = Array(40).fill(words).flat();
+    // Create fixed number of rows to cover vertical height
+    const rows = Array.from({ length: 18 });
+
     return (
-      <div 
-        className={`absolute inset-0 overflow-hidden px-4 py-6 text-justify opacity-60 select-none pointer-events-none ${colorClass}`}
-        style={{ lineHeight: '1.6' }}
-      >
-        {repeatedContent.map((word, i) => (
-          <React.Fragment key={i}>
-            <span className="inline-block mx-2 my-1 text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter whitespace-nowrap opacity-30">
-              {word}
-            </span>
-            {' '}
-          </React.Fragment>
+      <div className={`absolute inset-0 flex flex-col justify-between overflow-hidden opacity-60 select-none pointer-events-none ${colorClass} py-4`}>
+        {rows.map((_, i) => (
+          <div key={i} className="flex w-full overflow-hidden">
+            <div 
+               className={`flex whitespace-nowrap ${i % 2 === 0 ? 'animate-scroll-left' : 'animate-scroll-right'}`}
+               style={{ width: 'fit-content' }}
+            >
+               {getRowContent(words, i).map((word, wIndex) => (
+                 <span key={wIndex} className="inline-block mx-6 text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter opacity-30">
+                   {word}
+                 </span>
+               ))}
+            </div>
+          </div>
         ))}
       </div>
     );
@@ -130,15 +178,21 @@ const Hero: React.FC = () => {
       <div className={`absolute inset-0 bg-slate-50 flex items-center justify-center transition-opacity duration-300 ${isHovering ? 'opacity-20' : 'opacity-100'}`}>
         {renderBackgroundPattern(baseContent.words, baseContent.bgClassBase)}
         
-        <div className="relative z-10 max-w-6xl px-6 text-center">
-          <h1 className="text-5xl md:text-7xl lg:text-9xl font-black text-slate-900 tracking-tighter leading-none mb-6">
+        <div className="relative z-10 max-w-7xl px-6 text-center">
+          <h1 className={`${baseContent.headingClass} font-black text-slate-900 tracking-tighter leading-tight mb-6`}>
             {baseContent.greeting}<br />
-            {baseContent.iAm} <span className="text-orange-500">{baseContent.namePart1}</span><br />
-            <span className="text-orange-500">{baseContent.namePart2}</span>
+            {baseContent.iAm} <span className="text-orange-500">{baseContent.namePart1}</span>
+            {baseContent.namePart2 && (
+              <>
+                <br />
+                <span className="text-orange-500">{baseContent.namePart2}</span>
+              </>
+            )}
+            {baseContent.nameSuffix}
           </h1>
           
           <div className="flex justify-center gap-4 mt-12 pointer-events-auto">
-             <a href="#works" className="px-8 py-3 bg-slate-900 text-white font-bold tracking-widest text-sm hover:bg-orange-500 transition-colors">
+             <a href="#about" className="px-8 py-3 bg-slate-900 text-white font-bold tracking-widest text-sm hover:bg-orange-500 transition-colors">
                {baseContent.cta}
              </a>
           </div>
@@ -157,24 +211,25 @@ const Hero: React.FC = () => {
         style={{
           // Initial state (hidden)
           clipPath: `circle(0px at 50% 50%)`,
-          transition: 'clip-path 0.05s linear' // Very fast transition for smoother follow, or 'none' for instant
+          // On mobile, we might want this snappy, but a tiny delay helps smoothness
+          transition: 'clip-path 0.05s linear' 
         }}
       >
         {renderBackgroundPattern(overlayContent.words, "text-slate-700")}
 
-        <div className="relative z-10 max-w-6xl px-6 text-center">
-          <h1 className="text-5xl md:text-7xl lg:text-9xl font-black text-white tracking-tighter leading-none mb-6 font-sans">
+        <div className="relative z-10 max-w-7xl px-6 text-center">
+          <h1 className={`${overlayContent.headingClass} font-black text-white tracking-tighter leading-tight mb-6 font-sans`}>
             {overlayContent.greeting}<br />
-            {overlayContent.iAm} <span className="text-orange-500">{overlayContent.namePart1}</span><br />
-            <span className="text-orange-500">{overlayContent.namePart2}</span>
+            {overlayContent.iAm} <span className="text-orange-500">{overlayContent.namePart1}</span>
+            {overlayContent.namePart2 && (
+              <>
+                <br />
+                <span className="text-orange-500">{overlayContent.namePart2}</span>
+              </>
+            )}
+            {overlayContent.nameSuffix}
           </h1>
           
-          {/* 
-            Button in Overlay
-            Must align perfectly with the button in Layer 1.
-            Since this layer is pointer-events-none, clicks pass through to Layer 1.
-            Visually, we just need to show it.
-          */}
           <div className="flex justify-center gap-4 mt-12">
              <span className="px-8 py-3 bg-white text-slate-900 font-bold tracking-widest text-sm">
                {overlayContent.cta}

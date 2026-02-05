@@ -1,19 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Menu, X, Globe } from 'lucide-react';
 import { useLanguage } from '../LanguageContext';
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const { language, toggleLanguage, t } = useLanguage();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const navLinks = [
     { name: t.nav.intro, href: '#intro' },
@@ -24,7 +15,7 @@ const Header: React.FC = () => {
   ];
 
   return (
-    <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'}`}>
+    <header className="absolute top-0 left-0 w-full z-50 py-6 bg-transparent">
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         <a href="#intro" className="text-2xl font-bold font-serif text-slate-900 tracking-tighter">
           Andy<span className="text-teal-600">LI.</span>
@@ -69,21 +60,23 @@ const Header: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Nav */}
-      {isOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-white shadow-lg border-t border-slate-100 p-6 flex flex-col space-y-4">
+      {/* Mobile Nav with Animation */}
+      <div 
+        className={`md:hidden absolute top-full left-0 w-full bg-white shadow-lg border-t border-slate-100 overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96 opacity-100 visible' : 'max-h-0 opacity-0 invisible'}`}
+      >
+        <div className="p-6 flex flex-col space-y-4">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-lg font-medium text-slate-800 py-2 border-b border-slate-50 last:border-0"
+              className="text-lg font-medium text-slate-800 py-2 border-b border-slate-50 last:border-0 hover:text-teal-600 transition-colors"
               onClick={() => setIsOpen(false)}
             >
               {link.name}
             </a>
           ))}
         </div>
-      )}
+      </div>
     </header>
   );
 };
