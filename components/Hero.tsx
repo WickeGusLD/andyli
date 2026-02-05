@@ -85,47 +85,15 @@ const Hero: React.FC = () => {
       spotlight.style.clipPath = `circle(0px at 50% 50%)`;
     };
 
-    // Touch Events for Mobile
-    const handleTouchMove = (e: TouchEvent) => {
-      if (e.touches.length > 0) {
-        const touch = e.touches[0];
-        const rect = container.getBoundingClientRect();
-        const x = touch.clientX - rect.left;
-        const y = touch.clientY - rect.top;
-        spotlight.style.clipPath = `circle(250px at ${x}px ${y}px)`;
-      }
-    };
-
-    const handleTouchStart = (e: TouchEvent) => {
-      setIsHovering(true);
-      handleTouchMove(e); // Set initial position immediately
-    };
-
-    const handleTouchEnd = () => {
-      setIsHovering(false);
-      spotlight.style.clipPath = `circle(0px at 50% 50%)`;
-    };
-
     // Add Listeners
     container.addEventListener('mousemove', handleMouseMove);
     container.addEventListener('mouseenter', handleMouseEnter);
     container.addEventListener('mouseleave', handleMouseLeave);
     
-    // Touch listeners (passive: true to allow scrolling)
-    container.addEventListener('touchstart', handleTouchStart, { passive: true });
-    container.addEventListener('touchmove', handleTouchMove, { passive: true });
-    container.addEventListener('touchend', handleTouchEnd);
-    container.addEventListener('touchcancel', handleTouchEnd);
-
     return () => {
       container.removeEventListener('mousemove', handleMouseMove);
       container.removeEventListener('mouseenter', handleMouseEnter);
       container.removeEventListener('mouseleave', handleMouseLeave);
-      
-      container.removeEventListener('touchstart', handleTouchStart);
-      container.removeEventListener('touchmove', handleTouchMove);
-      container.removeEventListener('touchend', handleTouchEnd);
-      container.removeEventListener('touchcancel', handleTouchEnd);
     };
   }, []);
 
@@ -207,7 +175,7 @@ const Hero: React.FC = () => {
       */}
       <div 
         ref={spotlightRef}
-        className="absolute inset-0 bg-slate-900 flex items-center justify-center pointer-events-none"
+        className={`absolute inset-0 bg-slate-900 flex items-center justify-center pointer-events-none transition-opacity duration-300 ${isHovering ? 'opacity-100' : 'opacity-0'}`}
         style={{
           // Initial state (hidden)
           clipPath: `circle(0px at 50% 50%)`,

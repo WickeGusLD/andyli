@@ -1,10 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Menu, X, Globe } from 'lucide-react';
 import { useLanguage } from '../LanguageContext';
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const { language, toggleLanguage, t } = useLanguage();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navLinks = [
     { name: t.nav.intro, href: '#intro' },
@@ -15,7 +25,13 @@ const Header: React.FC = () => {
   ];
 
   return (
-    <header className="absolute top-0 left-0 w-full z-50 py-6 bg-transparent">
+    <header 
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b ${
+        isScrolled 
+          ? 'bg-white/90 backdrop-blur-md shadow-sm py-4 border-slate-200/50' 
+          : 'bg-transparent py-6 border-transparent'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         <a href="#intro" className="text-2xl font-bold font-serif text-slate-900 tracking-tighter">
           Andy<span className="text-teal-600">LI.</span>

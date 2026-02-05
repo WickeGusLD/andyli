@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { createPortal } from 'react-dom';
 import Section from './Section';
 import { PortfolioItem } from '../types';
 import { X, ExternalLink, ArrowRight } from 'lucide-react';
@@ -80,7 +81,7 @@ const Portfolio: React.FC = () => {
       </div>
 
       {/* Modal */}
-      {selectedItem && (
+      {selectedItem && createPortal(
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-slate-900/80 backdrop-blur-sm" onClick={() => setSelectedItem(null)}></div>
           
@@ -126,7 +127,8 @@ const Portfolio: React.FC = () => {
               )}
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </Section>
   );
