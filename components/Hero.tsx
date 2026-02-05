@@ -49,7 +49,7 @@ const Hero: React.FC = () => {
       iAm: "我是",
       namePart1: "李展鴻 Andy",
       namePart2: "", // Empty to avoid the break between part 1 and 2
-      nameSuffix: <>，<br />辛會！</>,
+      nameSuffix: <>，<br />幸會！</>,
       cta: "查看履歷",
       headingClass: "text-3xl md:text-5xl lg:text-7xl"
     }
@@ -123,7 +123,7 @@ const Hero: React.FC = () => {
         {rows.map((_, i) => (
           // Use pb-2 to prevent descenders from being cut off
           // Display all rows on all devices to reduce vertical gaps
-          <div key={i} className="flex w-full overflow-hidden pb-1">
+          <div key={i} className="flex w-full overflow-hidden pb-2">
             <div 
                className={`flex whitespace-nowrap ${i % 2 === 0 ? 'animate-scroll-left' : 'animate-scroll-right'}`}
                style={{ width: 'fit-content' }}
